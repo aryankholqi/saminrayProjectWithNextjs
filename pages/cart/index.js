@@ -1,10 +1,23 @@
-import { getCartProducts } from "@/api/cart";
+import { getCartProducts, removeProductFromCart, updateCart } from "@/api/cart";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Swal from "sweetalert2";
 
 export default function Cart({ cartProducts }) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "bottom-start",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+  const [count, setCount] = useState({});
   const { data: session } = useSession();
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
@@ -13,7 +26,38 @@ export default function Cart({ cartProducts }) {
       total += product.price * product.count;
     });
     setTotalPrice(total);
+    const initialCounts = {};
+    cartProducts.forEach((product) => {
+      initialCounts[product.id] = product.count;
+    });
+    setCount(initialCounts);
   }, []);
+  const changeCountHandler = (e, productId) => {
+    const newCount = { ...count };
+    newCount[productId] = e.target.value;
+    setCount(newCount);
+  };
+  const updateCartHandler = async (productId) => {
+    const updateCartReq = await updateCart(
+      {
+        count: count[productId],
+      },
+      productId
+    );
+    generateToast()
+  };
+  const removeProductHandler = async (productId) => {
+    const deleteProductReq = await removeProductFromCart(productId);
+    generateToast()
+  };
+  const generateToast = (status) => {
+    if (status === 201 || 200) {
+      Toast.fire({
+        icon: "success",
+        title: "سبد خرید بروز شد",
+      });
+    }
+  };
   return (
     <div className="container">
       <Head>
@@ -26,11 +70,34 @@ export default function Cart({ cartProducts }) {
           {cartProducts.map((product) => (
             <div key={product.id}>
               <Link href={`/products/${product.id}`}>
-                <li>
+                <li className="inline-block">
                   {product.title} - تعداد: {product.count} - مجموع:{" "}
                   {product.price * product.count}تومان
                 </li>
               </Link>
+              <span className="ms-10">
+                تعداد:{" "}
+                <input
+                  type="text"
+                  value={count[product.id]}
+                  className="w-1/12 p-1 border rounded-md"
+                  onChange={(e) => changeCountHandler(e, product.id)}
+                />
+              </span>
+              <button
+                type="button"
+                className="px-4 py-2 bg-tertiary text-white rounded-xl ms-2"
+                onClick={() => updateCartHandler(product.id)}
+              >
+                ثبت
+              </button>
+              <button
+                type="button"
+                className="px-4 py-2 bg-red-600 text-white rounded-xl ms-2"
+                onClick={() => removeProductHandler(product.id)}
+              >
+                حذف
+              </button>
               <hr className="w-1/3" />
             </div>
           ))}

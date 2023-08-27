@@ -17,3 +17,6 @@ export const updateCart = (data, productId) => {
 export const getCartProducts = () => {
   return axios.get(`http://localhost:4000/cart-products`);
 };
+export const removeProductFromCart = (productId) => {
+  return axios.delete(`http://localhost:4000/cart-products/${productId}`);
+};
