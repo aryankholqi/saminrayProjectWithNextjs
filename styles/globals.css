@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: IranSans;
+    src: url(/project/public/fonts/Sans\ a4fran3.ttf) format(truetype);
+  }
+}

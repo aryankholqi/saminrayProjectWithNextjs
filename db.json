@@ -1,0 +1,82 @@
+{
+  "popularProducts": [
+    {
+      "src": "https://picsum.photos/id/123/1200/400",
+      "title": "محصول شماره 1",
+      "category": "لباس",
+      "id": 1
+    },
+    {
+      "src": "https://picsum.photos/id/456/1200/400",
+      "title": "محصول شماره 2",
+      "category": "لباس",
+      "id": 2
+    },
+    {
+      "src": "https://picsum.photos/id/678/1200/400",
+      "title": "محصول شماره 3",
+      "category": "لباس",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "title": "تیشرت ساده سفید",
+      "category": "لباس",
+      "price": 300000,
+      "count": 3,
+      "sex": "men",
+      "id": 1
+    },
+    {
+      "title": "تیشرت ساده مشکی",
+      "category": "لباس",
+      "price": 350000,
+      "count": 3,
+      "sex": "men",
+      "id": 2
+    },
+    {
+      "title": "شلوار مام فیت",
+      "category": "لباس",
+      "price": 800000,
+      "count": 8,
+      "sex": "women",
+      "id": 3
+    },
+    {
+      "title": "شلوار مام استایل",
+      "category": "لباس",
+      "price": 750000,
+      "count": 6,
+      "sex": "women",
+      "id": 4
+    },
+    {
+      "title": "جوراب مردانه",
+      "category": "لباس",
+      "price": 30000,
+      "count": 20,
+      "sex": "men",
+      "id": 5
+    },
+    {
+      "title": "هودی ساده مشکی",
+      "category": "لباس",
+      "price": 500000,
+      "count": 8,
+      "sex": "men",
+      "id": 6
+    }
+  ],
+  "cart-products": [
+    {
+      "title": "تیشرت ساده سفید",
+      "category": "لباس",
+      "price": 400000,
+      "count": 2,
+      "sex": "men",
+      "id": 1
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "serve-json": "json-server --watch db.json --port 4000",
+    "tailwind": "npx tailwindcss -i ./styles/globals.css -o ./styles/app.css --watch"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.6",
+    "@mui/material": "^5.14.6",
+    "autoprefixer": "10.4.15",
+    "axios": "^1.4.0",
+    "formik": "^2.4.3",
+    "json-server": "^0.17.3",
+    "next": "13.4.19",
+    "next-auth": "^4.23.1",
+    "postcss": "8.4.28",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-select": "^5.7.4",
+    "reactstrap": "^9.2.0",
+    "sweetalert2": "^11.6.13",
+    "tailwindcss": "3.3.3",
+    "yup": "^1.2.0"
+  }
+}
