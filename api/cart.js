@@ -7,12 +7,16 @@ export const addToCart = (data) => {
     },
   });
 };
-export const updateCart = (data, productId) => {
-  return axios.patch(`http://localhost:4000/cart-products/${productId}`, data, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export const updateCart = (product) => {
+  return axios.put(
+    `http://localhost:4000/cart-products/${product.id}`,
+    product,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 };
 export const getCartProducts = () => {
   return axios.get(`http://localhost:4000/cart-products`);

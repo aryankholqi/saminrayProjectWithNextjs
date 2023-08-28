@@ -1,11 +1,17 @@
-import { getCartProducts, removeProductFromCart, updateCart } from "@/api/cart";
+import { getCartProducts } from "@/api/cart";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Swal from "sweetalert2";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
+import {
+  useGetCartProducts,
+  useRemoveProductFromCart,
+  useUpdateCart,
+} from "@/querries/useCart";
 
-export default function Cart({ cartProducts }) {
+export default function Cart() {
   const Toast = Swal.mixin({
     toast: true,
     position: "bottom-start",
@@ -20,35 +26,40 @@ export default function Cart({ cartProducts }) {
   const [count, setCount] = useState({});
   const { data: session } = useSession();
   const [totalPrice, setTotalPrice] = useState(0);
+  const cartProducts = useGetCartProducts();
+  const updateCartMutate = useUpdateCart();
+  const deleteCartMutate = useRemoveProductFromCart();
+
   useEffect(() => {
     let total = 0;
-    cartProducts.map((product) => {
+    cartProducts?.data?.map((product) => {
       total += product.price * product.count;
     });
+
     setTotalPrice(total);
     const initialCounts = {};
-    cartProducts.forEach((product) => {
+    cartProducts?.data?.forEach((product) => {
       initialCounts[product.id] = product.count;
     });
+
     setCount(initialCounts);
-  }, []);
+  }, [cartProducts.data]);
   const changeCountHandler = (e, productId) => {
     const newCount = { ...count };
     newCount[productId] = e.target.value;
     setCount(newCount);
   };
-  const updateCartHandler = async (productId) => {
-    const updateCartReq = await updateCart(
-      {
-        count: count[productId],
-      },
-      productId
-    );
-    generateToast()
+  const updateCartHandler = (product) => {
+    const updatedProduct = {
+      ...product,
+      count: count[product.id],
+    };
+    updateCartMutate.mutate(updatedProduct);
+    generateToast();
   };
   const removeProductHandler = async (productId) => {
-    const deleteProductReq = await removeProductFromCart(productId);
-    generateToast()
+    deleteCartMutate.mutate(productId);
+    generateToast();
   };
   const generateToast = (status) => {
     if (status === 201 || 200) {
@@ -67,7 +78,7 @@ export default function Cart({ cartProducts }) {
       <hr className="my-5" />
       <div>
         <ul className="flex flex-col gap-5">
-          {cartProducts.map((product) => (
+          {cartProducts?.data?.map((product) => (
             <div key={product.id}>
               <Link href={`/products/${product.id}`}>
                 <li className="inline-block">
@@ -87,7 +98,7 @@ export default function Cart({ cartProducts }) {
               <button
                 type="button"
                 className="px-4 py-2 bg-tertiary text-white rounded-xl ms-2"
-                onClick={() => updateCartHandler(product.id)}
+                onClick={() => updateCartHandler(product)}
               >
                 ثبت
               </button>
@@ -121,11 +132,11 @@ export default function Cart({ cartProducts }) {
   );
 }
 export async function getServerSideProps() {
-  const response = await getCartProducts();
-  const data = response.data;
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery("cartProducts", getCartProducts);
   return {
     props: {
-      cartProducts: data,
+      dehydratedState: dehydrate(queryClient),
     },
   };
 }

@@ -71,20 +71,28 @@
   ],
   "cart-products": [
     {
+      "title": "هودی ساده مشکی",
+      "category": "لباس",
+      "price": 500000,
+      "count": "5",
+      "sex": "men",
+      "id": 6
+    },
+    {
+      "title": "تیشرت ساده سفید",
+      "category": "لباس",
+      "price": 300000,
+      "count": "25",
+      "sex": "men",
+      "id": 1
+    },
+    {
       "title": "شلوار مام فیت",
       "category": "لباس",
       "price": 800000,
-      "count": 2,
+      "count": 8,
       "sex": "women",
       "id": 3
-    },
-    {
-      "title": "جوراب مردانه",
-      "category": "لباس",
-      "price": 30000,
-      "count": 3,
-      "sex": "men",
-      "id": 5
     }
   ]
 }
