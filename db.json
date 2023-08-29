@@ -79,20 +79,20 @@
       "id": 6
     },
     {
-      "title": "تیشرت ساده سفید",
-      "category": "لباس",
-      "price": 300000,
-      "count": "25",
-      "sex": "men",
-      "id": 1
-    },
-    {
       "title": "شلوار مام فیت",
       "category": "لباس",
       "price": 800000,
       "count": 8,
       "sex": "women",
       "id": 3
+    },
+    {
+      "title": "تیشرت ساده مشکی",
+      "category": "لباس",
+      "price": 350000,
+      "count": 1,
+      "sex": "men",
+      "id": 2
     }
   ]
 }
