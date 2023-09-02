@@ -1,24 +1,4 @@
 {
-  "popularProducts": [
-    {
-      "src": "https://picsum.photos/id/123/1200/400",
-      "title": "محصول شماره 1",
-      "category": "لباس",
-      "id": 1
-    },
-    {
-      "src": "https://picsum.photos/id/456/1200/400",
-      "title": "محصول شماره 2",
-      "category": "لباس",
-      "id": 2
-    },
-    {
-      "src": "https://picsum.photos/id/678/1200/400",
-      "title": "محصول شماره 3",
-      "category": "لباس",
-      "id": 3
-    }
-  ],
   "products": [
     {
       "title": "تیشرت ساده سفید",
@@ -26,7 +6,9 @@
       "price": 300000,
       "count": 3,
       "sex": "men",
-      "id": 1
+      "rating": 4,
+      "id": 1,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/120942683.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
     },
     {
       "title": "تیشرت ساده مشکی",
@@ -34,7 +16,9 @@
       "price": 350000,
       "count": 3,
       "sex": "men",
-      "id": 2
+      "rating": 2,
+      "id": 2,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/116823472.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
     },
     {
       "title": "شلوار مام فیت",
@@ -42,7 +26,9 @@
       "price": 800000,
       "count": 8,
       "sex": "women",
-      "id": 3
+      "rating": 3,
+      "id": 3,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/de149be6a07c17e87cce5fa36bec7df494710417_1656624510.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
     },
     {
       "title": "شلوار مام استایل",
@@ -50,7 +36,9 @@
       "price": 750000,
       "count": 6,
       "sex": "women",
-      "id": 4
+      "rating": 5,
+      "id": 4,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/ce667eedf1c0c3616c62fc68edf85f7519ace61e_1637059993.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
     },
     {
       "title": "جوراب مردانه",
@@ -58,7 +46,9 @@
       "price": 30000,
       "count": 20,
       "sex": "men",
-      "id": 5
+      "rating": 3,
+      "id": 5,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/e4c5a5a524f0608f00244550ca295b6432670749_1639897341.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
     },
     {
       "title": "هودی ساده مشکی",
@@ -66,33 +56,21 @@
       "price": 500000,
       "count": 8,
       "sex": "men",
-      "id": 6
+      "rating": 5,
+      "id": 6,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/116910673.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
     }
   ],
   "cart-products": [
     {
-      "title": "هودی ساده مشکی",
-      "category": "لباس",
-      "price": 500000,
-      "count": "5",
-      "sex": "men",
-      "id": 6
-    },
-    {
       "title": "شلوار مام فیت",
       "category": "لباس",
       "price": 800000,
-      "count": 8,
-      "sex": "women",
-      "id": 3
-    },
-    {
-      "title": "تیشرت ساده مشکی",
-      "category": "لباس",
-      "price": 350000,
       "count": 1,
-      "sex": "men",
-      "id": 2
+      "sex": "women",
+      "rating": 3,
+      "id": 3,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/de149be6a07c17e87cce5fa36bec7df494710417_1656624510.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
     }
   ]
 }

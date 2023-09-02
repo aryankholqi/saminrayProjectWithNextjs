@@ -1,62 +1,89 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Label, Row, Col } from "reactstrap";
 import Select from "react-select";
-import { getAllProvinces, getCenterOfProvince } from "@/api/provinces";
+import { getAllProvinces, getCenterOfProvince } from "src/api/provinces";
 import { useFormik } from "formik";
-import paymentFormSchema from "@/Schema/paymentFormSchema";
+import paymentFormSchema from "src/Schema/paymentFormSchema";
 import { getSession, signIn } from "next-auth/react";
+import { useGetAllProvinces } from "@/src/querries/useProvinces";
+import Map from "@/src/components/Map/index";
 
 export default function SubmitCheckout({ provinces }) {
   const [isLoading, setIsLoading] = useState(true);
+
   const [cityOption, setCityOption] = useState([]);
+
+  const getAllProvinces = useGetAllProvinces(provinces);
+
   useEffect(() => {
+    console.log(typeof window);
     const securePage = async () => {
       const session = await getSession();
+
       if (!session) {
         signIn();
       } else {
         setIsLoading(false);
       }
     };
+
     securePage();
   }, []);
-  const provinceOptions = provinces.map((province) => ({
+
+  const provinceOptions = getAllProvinces.data.map((province) => ({
     value: province.name,
     label: province.name,
     id: province.id,
   }));
+
   const initialValues = {
     name: "",
     mobile: "",
     province: "",
     city: "",
     address: "",
+    lat:"",
+    lang:"",
   };
+
   const formik = useFormik({
     initialValues,
     validationSchema: paymentFormSchema,
     onSubmit: (values) => submitFormHandler(values),
   });
+
   const submitFormHandler = (values) => {
     console.log(values);
   };
+
   const changeProvince = async (e) => {
+    formik.values.province = e.value;
+
     const centerOfProvince = await getCenterOfProvince(e.id);
+
     const options = [
       {
         value: centerOfProvince.data.center,
         label: centerOfProvince.data.center,
       },
     ];
+
     setCityOption(options);
   };
+
   if (isLoading) {
-    return <h2>لطفا منتظر بمانید...</h2>;
+    return (
+      <div className="container">
+        <h2 className="text-xl font-medium">لطفا منتظر بمانید...</h2>
+      </div>
+    );
   }
+
   return (
     <div className="container">
-      <h1 className="text-xl font-medium">ثبت مشخصات خریدار</h1>
-      <Form className="mt-5" onSubmit={formik.handleSubmit}>
+      <h1 className="text-xl font-medium text-center">ثبت مشخصات خریدار</h1>
+      <hr className="w-1/2 mx-auto text-primary my-5" />
+      <Form onSubmit={formik.handleSubmit}>
         <Row className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-col-4">
           <Col className="mb-5">
             <Label for="name">نام خریدار</Label>
@@ -99,7 +126,6 @@ export default function SubmitCheckout({ provinces }) {
               name="province"
               placeholder="لطفا استان خود را انتخاب کنید"
               onChange={(e) => {
-                formik.setFieldValue("province", e.value);
                 changeProvince(e);
               }}
               onBlur={formik.handleBlur}
@@ -117,7 +143,9 @@ export default function SubmitCheckout({ provinces }) {
               className="w-2/3"
               name="city"
               isDisabled={cityOption.length === 0}
-              onChange={(e) => formik.setFieldValue("city", e.value)}
+              onChange={(e) => {
+                formik.setFieldValue("city", e.value);
+              }}
               onBlur={formik.handleBlur}
             />
             {formik.errors.city && formik.touched.city && (
@@ -140,7 +168,11 @@ export default function SubmitCheckout({ provinces }) {
             )}
           </Col>
         </Row>
-        <Row>
+        <h2 className="text-center text-xl font-medium mt-16 mb-5">همینطور میتونی از روی نقشه محل ارسال رو مشخص کنی:</h2>
+        <div className="h-96">
+          <Map formik={formik}/>
+        </div>
+        <Row className="mt-5">
           <button
             className="px-4 py-2 bg-primary text-white rounded-xl"
             type="submit"

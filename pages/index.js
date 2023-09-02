@@ -1,68 +1,65 @@
-import { getPopularProducts } from "@/api/products";
-import React, { useState } from "react";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import React from "react";
+import img1 from "public/images/home/1.jpeg";
+import img2 from "public/images/home/2.jpg";
+import img3 from "public/images/home/3.jpg";
+import Image from "next/image";
+import MoodIcon from "@mui/icons-material/Mood";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import CheckroomIcon from "@mui/icons-material/Checkroom";
+import Slider from "@/src/components/Carousel/Carousel";
 
-export default function Home({ popularProducts }) {
-  const [counter, setCounter] = useState(0);
-  const nextProductchange = () => {
-    if (counter === popularProducts.length - 1) {
-      setCounter(0);
-    } else {
-      setCounter((prev) => prev + 1);
-    }
-  };
-  const prevProductChange = () => {
-    if (counter === 0) {
-      setCounter(popularProducts.length - 1);
-    } else {
-      setCounter((prev) => prev - 1);
-    }
-  };
+export default function Home() {
   return (
-    <div className="container">
-      <h1 className="text-xl md:text-3xl font-semibold text-center">
-        به فروشگاه ویما استایل خوش آمدید
-      </h1>
-      <section className="mt-10">
-        <p className="text-xl section-header">محبوب ترین محصولات فروشگاه:</p>
-        <div className="mx-auto w-1/2 mt-5">
+    <div className="container mt-10">
+      <div className="grid grid-cols-3 gap-5">
+        <div className="text-center col-span-1">
+          <h1 className="text-xl md:text-5xl font-bold text-black-300">
+            <span className="text-tertiary-400">V</span>
+            <br />E<br />E<br />M<br />A<p>ــــــــــــــــــــ</p>
+            <br />
+            <span className="text-tertiary-400">S</span>
+            <br />T<br />Y<br />L<br />E
+          </h1>
+        </div>
+        <div>
+          <div className="col-span-1 grid gap-y-5">
+            <Image alt="logo" src={img2} className="transition-all hover:scale-105" priority/>
+            <Image alt="logo" src={img3} className="transition-all hover:scale-105" priority/>
+          </div>
+        </div>
+        <div className="col-span-1">
+          <Image alt="logo" src={img1} className="transition-all hover:scale-105" priority/>
+        </div>
+      </div>
+      <section className="mt-28">
+        <div className="flex justify-center gap-40">
           <div className="text-center">
-            <div className="flex items-center">
-              <ArrowForwardIosIcon
-                onClick={nextProductchange}
-                className="cursor-pointer"
-              />
-              <img
-                src={popularProducts[counter].src}
-                alt="product"
-                className="w-max h-max"
-              />
-              <ArrowBackIosIcon
-                onClick={prevProductChange}
-                className="cursor-pointer"
-              />
-            </div>
-            <div>
-              <p className="font-semibold text-2xl">
-                {popularProducts[counter].title}
-              </p>
-              <small className="font-medium">
-                دسته بندی: {popularProducts[counter].category}
-              </small>
-            </div>
+            <p className="text-2xl font-bold">
+              <MoodIcon className="text-3xl text-primary" /> رضایت مشتری
+            </p>
+            <span className="font-normal text-2xl">83</span>
+          </div>
+          <div className="text-center">
+            <p className="text-2xl font-bold">
+              <ThumbUpOffAltIcon className="text-3xl text-primary" /> رضایت
+              مشتری
+            </p>
+            <span className="font-normal text-2xl">83</span>
+          </div>
+          <div className="text-center">
+            <p className="text-2xl font-bold">
+              <CheckroomIcon className="text-3xl text-primary" /> رضایت مشتری
+            </p>
+            <span className="font-normal text-2xl">83</span>
           </div>
         </div>
       </section>
+      <section className="mt-16">
+        <p className={`text-xl font-normal text-center`}>
+          اینا محبوب ترینان. با ویـــمایی ها موافقی؟
+        </p>
+        <Slider />
+      </section>
     </div>
   );
-}
-export async function getServerSideProps() {
-  const response = await getPopularProducts();
-  const data = response.data;
-  return {
-    props: {
-      popularProducts: data,
-    },
-  };
 }

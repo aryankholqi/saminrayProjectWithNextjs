@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "src/components/Navbar/Navbar";
 import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
 import {
@@ -8,6 +8,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { useState } from "react";
+import Footer from "@/src/components/Footer/Footer";
 
 export default function App({
   Component,
@@ -21,14 +22,15 @@ export default function App({
           <Head>
             <title>فروشگاه ویما استایل</title>
             <meta name="description" content="فروشگاه لباس مردانه و زنانه" />
-            <meta charset="UTF-8" />
+            <meta charSet="UTF-8" />
             <meta
               name="viewport"
-              content="width=device-width, initial-scale=1.0"
+              content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
             />
           </Head>
           <Navbar />
           <Component {...pageProps} />
+          <Footer/>
         </SessionProvider>
       </Hydrate>
     </QueryClientProvider>

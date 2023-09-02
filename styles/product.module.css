@@ -1,0 +1,11 @@
+.cardHover {
+  animation: hover 0.7s 1 forwards;
+}
+@keyframes hover {
+  0% {
+    @apply h-0;
+  }
+  100% {
+    @apply h-[87%];
+  }
+}
