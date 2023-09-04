@@ -63,14 +63,24 @@
   ],
   "cart-products": [
     {
-      "title": "شلوار مام فیت",
+      "title": "تیشرت ساده سفید",
       "category": "لباس",
-      "price": 800000,
+      "price": 300000,
+      "count": "2",
+      "sex": "men",
+      "rating": 4,
+      "id": 1,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/120942683.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
+    },
+    {
+      "title": "تیشرت ساده مشکی",
+      "category": "لباس",
+      "price": 350000,
       "count": 1,
-      "sex": "women",
-      "rating": 3,
-      "id": 3,
-      "image": "https://dkstatics-public.digikala.com/digikala-products/de149be6a07c17e87cce5fa36bec7df494710417_1656624510.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
+      "sex": "men",
+      "rating": 2,
+      "id": 2,
+      "image": "https://dkstatics-public.digikala.com/digikala-products/116823472.jpg?x-oss-process=image/resize,m_lfit,h_800,w_800/quality,q_90"
     }
   ]
 }

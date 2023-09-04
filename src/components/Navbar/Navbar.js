@@ -24,7 +24,7 @@ export default function Navbar() {
           isOpen
             ? "flex justify-center flex-col gap-20 items-center lg:hidden"
             : "hidden"
-        } w-1/2 md:w-1/3 h-full bg-tertiary absolute top-0 left-0 z-10`}
+        } w-1/2 md:w-1/3 h-full bg-tertiary absolute top-0 left-0 z-20`}
       >
         <ul>
           <Link href="/">
@@ -168,7 +168,7 @@ export default function Navbar() {
           )}
         </div>
         <div
-          className={`lg:hidden ms-5 z-10 text-black-400 transition-all ${
+          className={`lg:hidden ms-5 z-30 text-black-400 transition-all ${
             isOpen ? "rotate-90" : ""
           }`}
         >

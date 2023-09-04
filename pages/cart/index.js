@@ -7,7 +7,7 @@ import { useGetCartProducts } from "src/querries/useCart";
 import CartProductCard from "@/src/components/CartProductCard/CartProductCard";
 import { useGetAllProducts } from "@/src/querries/useProduct";
 
-export default function Cart({cartProducts}) {
+export default function Cart({ cartProducts }) {
   const { data: session } = useSession();
 
   const [totalPrice, setTotalPrice] = useState(0);
@@ -34,9 +34,9 @@ export default function Cart({cartProducts}) {
       <hr className="w-1/2 mx-auto my-5 text-tertiary" />
       <div>
         {!allProducts.isLoading && (
-          <ul className="flex flex-col gap-y-5 items-center">
+          <ul className="flex flex-col gap-y-10 items-center">
             {getCartProducts.data.length === 0 ? (
-              <p className="font-medium text-xl">
+              <p className="font-medium text-md md:text-xl">
                 محصولی توی سبد خریدت نیست. بدو برو یه چیزی بردار
               </p>
             ) : (

@@ -101,27 +101,29 @@ export default function ProductDetails({ product }) {
             {product.title}
           </BreadcrumbItem>
         </Breadcrumb>
-        <div className="grid grid-cols-3 gap-5 bg-secondary-200 p-5 rounded-xl">
-          <div className="col-span-1">
-            <Image
-              src={product.image}
-              alt={product.title}
-              width={1000}
-              height={1000}
-              className="w-full"
-            />
-          </div>
-          <div>
-            <h1 className="text-2xl font-medium">{product.title}</h1>
-            <Rating value={product.rating} className="mt-3" readOnly />
-            <p className="text-lg font-medium">تعداد: {product.count}</p>
-            <p className="font-medium w-2/3 mt-3 text-lg">
-              با خریدن این لباس میتونی عضو ویمایی ها بشی و از کلی امتیازای خوب
-              بهره مند میشی
-            </p>
+        <div className="flex flex-col md:flex-row md:justify-between lg:justify-around bg-secondary-200 p-5 rounded-xl">
+          <div className="flex gap-x-5 md:flex-col md:w-1/2 xl:flex-row xl:w-3/4">
+            <div className="mb-4">
+              <Image
+                src={product.image}
+                alt={product.title}
+                width={1000}
+                height={1000}
+                className="w-full"
+              />
+            </div>
+            <div className="mb-4 xl:w-1/3">
+              <h1 className="text-2xl font-medium">{product.title}</h1>
+              <Rating value={product.rating} className="mt-3" readOnly />
+              <p className="text-lg font-medium">تعداد: {product.count}</p>
+              <p className="font-medium w-full mt-3 text-lg sm:text-base">
+                با خریدن این لباس میتونی عضو ویمایی ها بشی و از کلی امتیازای خوب
+                بهره مند میشی
+              </p>
+            </div>
           </div>
           <div className="bg-secondary-100 rounded-xl p-4 flex flex-col justify-between">
-            <div>
+            <div className="">
               <h2 className="text-xl font-medium">فروشنده</h2>
               <p className="mt-8 font-medium">
                 <StorefrontOutlinedIcon /> ویما استایل -{" "}

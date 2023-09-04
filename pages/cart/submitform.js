@@ -93,7 +93,7 @@ export default function SubmitCheckout({ provinces }) {
               name="name"
               id="name"
               placeholder="نام خود را وارد کنید"
-              className="outline rounded-md p-1.5 w-2/3"
+              className="outline rounded-md p-1.5 w-full sm:w-2/3 md:w-3/4 lg:w-4/5"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -109,7 +109,7 @@ export default function SubmitCheckout({ provinces }) {
               name="mobile"
               id="mobile"
               placeholder="شماره تماس خود را وارد کنید"
-              className="outline rounded-md p-1.5 w-2/3"
+              className="outline rounded-md p-1.5 w-full sm:w-2/3 md:w-3/4 lg:w-4/5"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -122,7 +122,7 @@ export default function SubmitCheckout({ provinces }) {
             <br />
             <Select
               options={provinceOptions}
-              className="w-2/3"
+              className="w-full sm:w-2/3 md:w-3/4 lg:w-4/5"
               name="province"
               placeholder="لطفا استان خود را انتخاب کنید"
               onChange={(e) => {
@@ -140,7 +140,7 @@ export default function SubmitCheckout({ provinces }) {
             <Select
               options={cityOption}
               placeholder="لطفا شهر خود را انتخاب کنید"
-              className="w-2/3"
+              className="w-full sm:w-2/3 md:w-3/4 lg:w-4/5"
               name="city"
               isDisabled={cityOption.length === 0}
               onChange={(e) => {
@@ -159,7 +159,7 @@ export default function SubmitCheckout({ provinces }) {
               name="address"
               id="address"
               rows="5"
-              className="outline rounded-md p-1.5 w-2/3"
+              className="outline rounded-md p-1.5 w-full sm:w-2/3 md:w-3/4 lg:w-4/5"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             ></textarea>

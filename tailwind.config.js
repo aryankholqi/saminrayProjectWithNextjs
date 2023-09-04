@@ -10,14 +10,32 @@ module.exports = {
       center: true,
       padding: "1.3rem",
     },
+    screens: {
+      xs: "380px",
+
+      sm: "576px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "768px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "992px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1200px",
+      // => @media (min-width: 1280px) { ... }
+
+      "2xl": "1400px",
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       colors: {
         primary: {
-          DEFAULT:"#546a7b",
-          100:"#4c5f6f",
-          200:"#435562",
-          300:"#3b4a56",
-          400:"#32404a"
+          DEFAULT: "#546a7b",
+          100: "#4c5f6f",
+          200: "#435562",
+          300: "#3b4a56",
+          400: "#32404a",
         },
         secondary: {
           DEFAULT: "#FDFDFF",
@@ -30,7 +48,7 @@ module.exports = {
           200: "#4e757e",
           300: "#45666f",
           400: "#3b585f",
-          500: "#31494f"
+          500: "#31494f",
         },
         black: {
           DEFAULT: "#393D3F",

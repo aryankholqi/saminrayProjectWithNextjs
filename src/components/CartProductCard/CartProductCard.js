@@ -47,56 +47,61 @@ export default function CartProductCard({ product, maxCount }) {
     }
   };
   return (
-    <div key={product.id} className="flex items-center justify-between">
-      <li className="flex items-center justify-evenly">
-        <div className="w-1/6">
-          <Image
-            src={product.image}
-            alt={product.title}
-            width={250}
-            height={250}
-            priority
-          />
-        </div>
-        <Link href={`/products/${product.id}`}>
-          <div>
-            {product.title} - مجموع: {product.price * product.count}تومان
-            <br />
-            <p className="flex items-center mt-2">
-              <Rating value={product.rating} readOnly />
-              <span className="ms-2">موجودی: {maxCount}</span>
-            </p>
+    <>
+      <div
+        key={product.id}
+        className="flex flex-col lg:flex-row gap-y-5 items-center justify-between"
+      >
+        <li className="flex items-center gap-x-5 sm:gap-x-2 justify-evenly">
+          <div className="w-1/3 sm:w-1/4">
+            <Image
+              src={product.image}
+              alt={product.title}
+              width={250}
+              height={250}
+              priority
+            />
           </div>
-        </Link>
-      </li>
+          <Link href={`/products/${product.id}`}>
+            <div>
+              {product.title} - مجموع: {product.price * product.count}تومان
+              <br />
+              <p className="flex items-center mt-2">
+                <Rating value={product.rating} readOnly />
+                <span className="ms-2">موجودی: {maxCount}</span>
+              </p>
+            </div>
+          </Link>
+        </li>
 
-      <div className="flex items-center">
-        تعداد:{" "}
-        <input
-          type="number"
-          min={0}
-          max={maxCount}
-          value={count}
-          className="w-1/4 p-1 border rounded-md ms-2"
-          onChange={(e) => setCount(e.target.value)}
-        />
-        <div className="flex">
-          <button
-            type="button"
-            className="px-4 py-2 bg-primary text-white rounded-xl ms-2 hover:opacity-90 transition-all"
-            onClick={() => updateCartHandler(product)}
-          >
-            ویرایش
-          </button>
-          <button
-            type="button"
-            className="px-4 py-2 bg-red-600 text-white rounded-xl ms-2 hover:opacity-90 transition-all"
-            onClick={() => removeProductHandler(product.id)}
-          >
-            حذف
-          </button>
+        <div className="flex items-center">
+          تعداد:{" "}
+          <input
+            type="number"
+            min={0}
+            max={maxCount}
+            value={count}
+            className="w-1/4 p-1 border rounded-md ms-2"
+            onChange={(e) => setCount(e.target.value)}
+          />
+          <div className="flex">
+            <button
+              type="button"
+              className="px-4 py-2 bg-primary text-white rounded-xl ms-2 hover:opacity-90 transition-all"
+              onClick={() => updateCartHandler(product)}
+            >
+              ویرایش
+            </button>
+            <button
+              type="button"
+              className="px-4 py-2 bg-red-600 text-white rounded-xl ms-2 hover:opacity-90 transition-all"
+              onClick={() => removeProductHandler(product.id)}
+            >
+              حذف
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -24,12 +24,12 @@ export default function Slider() {
     }
   };
   return (
-    <div className="grid grid-cols-1 w-2/3 mx-auto relative my-8 overflow-hidden">
+    <div className="columns-1 w-full md:w-2/3 mx-auto relative my-8 overflow-hidden">
       <ArrowForwardIosIcon
         className="absolute text-secondary-200 top-1/2 ms-5 p-1 rounded-xl bg-black-100 cursor-pointer transition-all hover:opacity-80"
         onClick={nextSliderHandler}
       />
-      <Image src={sliders[counter]} alt="logo"/>
+      <Image src={sliders[counter]} alt="logo" />
       <ArrowBackIosIcon
         className="absolute text-secondary-200 top-1/2 left-0 me-5 p-1 rounded-xl bg-black-100 cursor-pointer transition-all hover:opacity-80"
         onClick={prevSliderHandler}
